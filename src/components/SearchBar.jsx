@@ -17,7 +17,7 @@ function SearchBar({ onSearch }) {
           type="text"
           value={inputValue} // Controlled input.
           placeholder="Search..."
-          className="w-full focus:scale-110 focus:duration-200 duration-300 px-4 py-2 pr-10 outline-none border text-orange-400 border-[#323638] rounded-lg"
+          className="w-full focus:scale-110 focus:duration-200 duration-300 px-4 py-2 pr-10 outline-none border text-orange-400 border-[#7B7265] rounded-lg"
           onFocus={() =>
             document
               .getElementById("search-icon")
