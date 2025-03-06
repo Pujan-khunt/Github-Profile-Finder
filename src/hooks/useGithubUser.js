@@ -8,34 +8,46 @@ function useGithubUser(username) {
   });
 
   const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [userExists, setUserExists] = useState(false);
 
   useEffect(() => {
     async function fetchUserData() {
-      if (!username) return;
+      // If no username is provided, just return with default values.
+      if (!username) {
+        setData(null);
+        setError(null);
+        setUserExists(false);
+        return;
+      }
 
       try {
+        // Initally before fetching the api show loading screen
+        // And change state of error to null and userExists to false
         setLoading(true);
         setError(null);
+        setUserExists(false);
 
         const response = await oktokit.request(`GET /users/${username}`);
         console.log(response);
 
         // Update state variables based on api response.
-        setLoading(false);
         setData(response.data);
+        setUserExists(true);
       } catch (error) {
-        // Update and display error.
+        setUserExists(false);
         setError(true);
         console.error(error);
+      } finally {
+        setLoading(false);
       }
     }
 
     fetchUserData();
   }, [username]);
 
-  return { data, loading, error };
+  return { data, loading, error, userExists };
 }
 
 export default useGithubUser;
