@@ -5,7 +5,7 @@ function SearchBar({ onSearch }) {
 
   return (
     <>
-      <div className="text-6xl bg-clip-text text-transparent bg-gradient-to-r from-orange-400 to-orange-600 text-center mt-10 mb-6">
+      <div className="text-6xl bg-clip-text text-transparent bg-gradient-to-r from-orange-300 to-orange-700 text-center mt-10 mb-6">
         Github Profile Finder
       </div>
 
@@ -25,13 +25,13 @@ function SearchBar({ onSearch }) {
             className="w-full mx-auto focus:scale-110 focus:duration-200 duration-300 px-4 py-2 pr-10 outline-none border text-orange-400 border-[#7B7265] rounded-lg"
             onFocus={() =>
               document
-              .getElementById("search-icon")
-              .classList.add("translate-x-4")
+                .getElementById("search-icon")
+                .classList.add("translate-x-4")
             }
             onBlur={() =>
               document
-              .getElementById("search-icon")
-              .classList.remove("translate-x-4")
+                .getElementById("search-icon")
+                .classList.remove("translate-x-4")
             }
             onChange={(e) => {
               setInputValue(e.target.value);
